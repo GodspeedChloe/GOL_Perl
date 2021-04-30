@@ -2,12 +2,12 @@ package Automata::Cells;
 
 use warnings;
 use feature "say";
+use diagnostics;
 
 sub new {
   my $class = shift;
   my $self = {
-    all => shift,
-    dying => shift
+      all => shift
   };
   bless $self, $class;
   return $self;
@@ -25,11 +25,7 @@ sub applyRules {
 
 sub isCellAlive {
   my ($self, $x, $y) = @_;
-  say $self->{all};
-  for my $key (keys $self->{all}){
-    say "Howdy";
-  }
-  return ((exists $cs{$x.','.$y}) ? 1 : 0);
+  return (exists $self->{all}->{$x.",".$y}) ? 1 : 0;
 }
 
 1;

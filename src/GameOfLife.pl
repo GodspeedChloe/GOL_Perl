@@ -15,18 +15,13 @@ use Board::TerminalBoard;
 use Automata::Cells;
 
 
-our %starting_cells = (
+my %starting_cells = (
   "20,20"=>"1",
   "20,21"=>"1",
   "20,22"=>"1"
 );
-my $cells = new Automata::Cells(\%starting_cells, my %ds);
-if ($cells->isCellAlive(20,21)){
-  print("HOLY SMOKES");
-}
-else {
-  print("OHNO");
-}
+my $ref_cells = \%starting_cells;
+my $cells = new Automata::Cells($ref_cells);
 my $board = new Board::TerminalBoard(50,50,0,new Curses, $cells);
 # Use string description of coordinates, perl does not support array as key
 
